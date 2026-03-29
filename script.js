@@ -1,29 +1,42 @@
-// Typing Animation
-const titleText = "Java Developer | Software Engineer";
+// 1. Typing Effect
+const typedText = "Java Developer | Software Engineer ";
 let charIndex = 0;
 
-function typeWriter() {
-  if (charIndex < titleText.length) {
-    document.getElementById("typing-text").innerHTML += titleText.charAt(charIndex);
-    charIndex++;
-    setTimeout(typeWriter, 100);
-  }
+function typeEffect() {
+    if (charIndex < typedText.length) {
+        document.getElementById("typing-text").innerHTML += typedText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 60);
+    }
 }
 
-// Back to Top functionality
-const scrollBtn = document.getElementById("backToTop");
+// 2. Scroll Reveal Animation
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+        }
+    });
+}
 
-window.onscroll = function() {
-  if (window.pageYOffset > 300) {
-    scrollBtn.style.display = "block";
-  } else {
-    scrollBtn.style.display = "none";
-  }
+// 3. Back to Top Logic
+const topBtn = document.getElementById("backToTop");
+window.onscroll = () => {
+    revealOnScroll();
+    if (window.scrollY > 400) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
 };
 
-scrollBtn.onclick = function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+topBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// Initialize
-window.onload = typeWriter;
+// Start
+window.onload = typeEffect;
