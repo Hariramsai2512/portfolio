@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alekhya Pakala's portfolio. Computer Science graduate and aspiring software developer.">
+  <title>Hari Ram Sai | Software Developer</title>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --ink: #182033;
+      --muted: #667085;
+      --line: #e6e9f0;
+      --primary: #6558e8;
+      --primary-dark: #5144d3;
+      --soft: #eeecff;
+      --navy: #171a35;
+      --radius: 20px;
+      --shadow: 0 18px 50px rgba(26, 31, 58, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(230,233,240,.85); }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-size: 2.05rem; font-weight: 800; letter-spacing: -.04em; }
+    .brand span { color: var(--primary); }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: #4d566a; font-size: 1.00 rem; font-weight: bold; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 999px; padding: 12px 19px; background: var(--primary); color: white; font-size: .9rem; font-weight: 700; border: 1px solid var(--primary); transition: .2s ease; }
+    .nav-cta:hover, .button:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .button.secondary { color: var(--ink); background: white; border-color: var(--line); }
+    .button.secondary:hover { border-color: var(--primary); color: var(--primary); background: white; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; border-radius: 12px; padding: 9px 12px; color: var(--ink); }
+    .hero { padding: 92px 0 76px; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(101,88,232,.13), rgba(101,88,232,0)); top: -210px; right: -100px; pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 70px; position: relative; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--primary); background: var(--soft); border-radius: 999px; padding: 7px 13px; font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--primary); }
+    h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.06; letter-spacing: -.065em; margin: 22px 0 18px; max-width: 760px; }
+    h1 span { color: var(--primary); }
+    .hero-copy { color: var(--muted); font-size: 1.08rem; max-width: 620px; margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .quick-facts { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 34px; color: var(--muted); font-size: .88rem; }
+    .quick-facts strong { color: var(--ink); display: block; font-size: 1rem; }
+    .profile-card { background: var(--navy); border-radius: 28px; padding: 28px; color: white; box-shadow: var(--shadow); transform: rotate(2deg); }
+    .profile-art { min-height: 250px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(145deg, #8b80ff, #5145c8); position: relative; overflow: hidden; }
+    .profile-art::before, .profile-art::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; width: 240px; height: 240px; }
+    .profile-art::after { width: 310px; height: 310px; }
+    .monogram { font-size: 5rem; font-weight: 900; letter-spacing: -.08em; z-index: 1; }
+    .profile-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 22px; }
+    .profile-caption strong { display: block; font-size: 1.05rem; }
+    .profile-caption small { color: #c6c9dd; }
+    .profile-status { width: 10px; height: 10px; border-radius: 50%; background: #65d6a4; box-shadow: 0 0 0 5px rgba(101,214,164,.14); }
+    section { padding: 76px 0; }
+    .section-heading { max-width: 660px; margin-bottom: 34px; }
+    .section-kicker { color: var(--primary); text-transform: uppercase; font-size: 1.00rem; font-weight: 800; letter-spacing: .12em; }
+    h2 { font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -.055em; line-height: 1.15; margin: 10px 0 12px; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; }
+    .info-panel, .about-copy, .skill-card, .project-card, .education-card, .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 28px rgba(26,31,58,.035); }
+    .info-panel { padding: 28px; }
+    .info-row { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+    .info-row:last-child { border-bottom: 0; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row strong { text-align: right; }
+    .about-copy { padding: 32px; color: var(--muted); }
+    .about-copy p:first-child { margin-top: 0; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { padding: 25px; }
+    .skill-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; color: var(--primary); background: var(--soft); font-size: 1.15rem; font-weight: 900; }
+    .skill-card h3 { margin: 17px 0 12px; font-size: 1.05rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { border: 1px solid var(--line); color: #4f596d; background: #fafbfe; border-radius: 999px; padding: 6px 10px; font-size: .78rem; font-weight: 600; }
+    .projects { background: #f0f1fa; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project-card { padding: 25px; display: flex; flex-direction: column; min-height: 300px; transition: .2s ease; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .project-number { color: var(--primary); font-size: .78rem; font-weight: 900; letter-spacing: .1em; }
+    .project-card h3 { font-size: 1.2rem; line-height: 1.3; margin: 18px 0 10px; }
+    .project-card p { color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
+    .project-card .tags { margin-top: auto; }
+    .project-link { display: inline-flex; align-items: center; gap: 7px; color: var(--primary); font-size: .85rem; font-weight: 800; margin-top: 20px; }
+    .education-card { padding: 30px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .education-card h3 { margin: 0 0 6px; font-size: 1.15rem; }
+    .education-card p { margin: 0; color: var(--muted); }
+    .year-pill { white-space: nowrap; color: var(--primary); background: var(--soft); border-radius: 999px; padding: 8px 13px; font-size: .82rem; font-weight: 800; }
+    .contact { background: var(--navy); color: white; }
+    .contact .section-kicker { color: #aaa3ff; }
+    .contact .section-heading p { color: #c0c3d4; }
+    .contact-card { background: #222642; border-color: #343956; padding: 30px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact-card p { color: #c0c3d4; margin: 6px 0 0; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact-links a { border: 1px solid #505674; border-radius: 999px; padding: 10px 15px; font-size: .86rem; font-weight: 700; }
+    .contact-links a:hover { background: var(--primary); border-color: var(--primary); }
+    footer { background: var(--navy); border-top: 1px solid #343956; color: #aeb2c7; padding: 22px 0; font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; }
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr .72fr; gap: 32px; }
+      .skills-grid, .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 32px, 1120px); }
+      .nav { height: 68px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: white; padding: 18px 24px 22px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .hero { padding: 66px 0 48px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .profile-card { max-width: 340px; transform: none; }
+      .profile-art { min-height: 190px; }
+      section { padding: 58px 0; }
+      .skills-grid, .project-grid { grid-template-columns: 1fr; }
+      .education-card, .contact-card { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home">Hari Ram Sai<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Computer Science Graduate</div>
+          <h1>Hi, I'm Hari Ram Sai.<br><span>Software Developer</span></h1>
+          <p class="hero-copy">I am a B.Tech Computer Science graduate interested in building useful, reliable software. I enjoy working with Java, web technologies, and object-oriented programming.</p>
+          <div class="hero-actions">
+            <a class="button" href="#projects">View my projects <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#contact">Get in touch</a>
+          </div>
+          <div class="quick-facts">
+            <div><strong>B.Tech</strong>Computer Science</div>
+            <div><strong>2022 to 2025</strong>Graduation</div>
+            <div><strong>Entry-level</strong>Open to opportunities</div>
+          </div>
+        </div>
+        <aside class="profile-card" aria-label="Hari Ram Sai profile card">
+          <div class="profile-art"><div class="monogram">HRS</div></div>
+          <div class="profile-caption"><div><strong>Hari Ram Sai</strong><small>Developer Portfolio</small></div><span class="profile-status" title="Available for opportunities"></span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading"><div class="section-kicker">About me</div><h2>Building a strong foundation in software development.</h2><p>A short introduction to my education, interests, and approach to development.</p></div>
+        <div class="about-grid">
+          <div class="info-panel">
+            <div class="info-row"><span>Name</span><strong>Hari Ram Sai</strong></div>
+            <div class="info-row"><span>Degree</span><strong>B.Tech, CSE</strong></div>
+            <div class="info-row"><span>Graduation</span><strong>2025</strong></div>
+            <div class="info-row"><span>Primary language</span><strong>Java</strong></div>
+            <div class="info-row"><span>Interests</span><strong>Software Development</strong></div>
+          </div>
+          <div class="about-copy">
+            <p>I am a Computer Science graduate with a foundation in programming, object-oriented concepts, and web development. I have worked on academic and personal projects that helped me practice problem-solving, application logic, and user-focused design.</p>
+            <p>I am interested in entry-level software development opportunities where I can contribute to a team, strengthen my technical skills, and build practical applications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading"><div class="section-kicker">Technical skills</div><h2>Tools and technologies I work with.</h2><p>Core skills presented in clear groups for quick review.</p></div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon">01</div><h3>Programming</h3><div class="tags"><span class="tag">Java</span><span class="tag">OOP Concepts</span><span class="tag">Problem Solving</span></div></article>
+          <article class="skill-card"><div class="skill-icon">02</div><h3>Web Development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></article>
+          <article class="skill-card"><div class="skill-icon">03</div><h3>Core Concepts</h3><div class="tags"><span class="tag">Data Structures</span><span class="tag">Postman</span><span class="tag">SDLC</span></div></article>
+          <article class="skill-card"><div class="skill-icon">04</div><h3>Database</h3><div class="tags"><span class="tag">MySQL</span><span class="tag">SQL</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-heading"><div class="section-kicker">Projects</div><h2>Projects that show what I can build.</h2><p>A selection of projects from my development practice. Add repository links and verified project details before publishing.</p></div>
+        <div class="project-grid">
+          <article class="project-card"><div class="project-number">PROJECT 01</div><h3>Simple Banking Application</h3><p>Developed a Java-based banking application that supports secure account creation, user authentication, OTP verification, and banking transactions. Implemented features such as balance inquiry, fund transfers, transaction history, PIN management, and password recovery using Object-Oriented Programming (OOP) concepts.
+          </p><div class="tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Collections</span></div></article>
+          <article class="project-card"><div class="project-number">PROJECT 02</div><h3>IoT-Based Safety System with Alerts and GPS Tracking</h3><p>Developed an IoT-based safety system designed to enhance personal security through real-time location tracking and emergency alerts. Integrated GPS technology to track the user's location and an alert mechanism to notify predefined contacts during emergency situations.</p><div class="tags"><span class="tag">IoT</span><span class="tag">GPS</span><span class="tag">Sensors</span><span class="tag">Alert Notification System</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading"><div class="section-kicker">Education</div><h2>Academic background.</h2></div>
+        <article class="education-card"><div><h3>Bachelor of Technology, Computer Science and Engineering</h3><p>Parvatha Reddy Babul Reddy Visvodaya Institute of Technology and Science and CGPA 7.17.</p></div></article>
+        <article class="education-card"><div><h3>Diploma in Engineering</h3><p>Government Polytechnic College Kavali and Percentage 70%.</p></div></article>
+        <article class="education-card"><div><h3>Secondary School</h3><p>Ravindhra Bharathi and CGPA 8.7.</p></div></article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-heading"><div class="section-kicker">Contact</div><h2>Let's talk about your next opportunity.</h2><p>Reach out for entry-level software development roles, internships, or project discussions.</p></div>
+        <div class="contact-card"><div><h3>Connect with Hari Ram Sai</h3><p>Replace the email placeholder with your active email address.</p></div><div class="contact-links"><a href="mailto:harivits007@gmail.com">Email</a><a href="https://github.com/Hariramsai2512" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/hari-ram-sai-gopidesi-a6472b266/" target="_blank" rel="noopener">LinkedIn</a></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> Hari Ram Sai</span><span>Designed for clarity, accessibility, and responsive browsing.</span></div></footer>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
